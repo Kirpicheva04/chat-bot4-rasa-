@@ -1,0 +1,55 @@
+version: "3.1"
+stories:
+- story: Weather request
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_weather
+  - action: action_get_weather
+
+- story: Goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: user asks for search
+  steps:
+  - intent: search
+  - action: action_web_search
+
+- story: Запрос анекдота
+  steps:
+  - intent: ask_music
+  - action: action_random_song
+
+- story: Анализ тональности сообщения
+  steps:
+  - intent: inform
+  - action: action_analyze_sentiment
+
+- story: Запрос имени
+  steps:
+  - intent: ask_name
+  - action: utter_ask_name
+  - intent: tell_name
+  - action: action_remember_name
+
+- story: Ответ на вопрос о имени
+  steps:
+  - intent: tell_name
+  - action: action_get_name
+
+- story: handle thank you
+  steps:
+  - intent: thank_you
+  - action: utter_you_are_welcome
+
+- story: handle how are you
+  steps:
+  - intent: how_are_you
+  - action: utter_how_are_you
+
+- story: handle what can you do
+  steps:
+  - intent: what_can_you_do
+  - action: utter_what_can_you_do

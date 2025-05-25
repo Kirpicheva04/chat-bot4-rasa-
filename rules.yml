@@ -1,0 +1,49 @@
+version: "3.1"
+
+rules:
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+
+- rule: Ответ на запрос погоды
+  steps:
+    - intent: get_weather
+    - action: action_get_weather
+
+- rule: Ответ на запрос музыки
+  steps:
+    - intent: ask_music
+    - action: action_random_song
+
+- rule: Ответ на математический запрос
+  steps:
+    - intent: calculate
+    - action: action_calculate
+
+- rule: Ответ на запрос времени
+  steps:
+    - intent: ask_time
+    - action: action_get_time
+
+- rule: Обработка поиска
+  steps:
+    - intent: search
+    - action: action_web_search
+
+- rule: Анализировать тональность для любых других сообщений
+  steps:
+    - intent: inform
+    - action: action_analyze_sentiment
+
+- rule: Сохраняем имя пользователя
+  steps:
+    - intent: tell_name
+    - slot_was_set:
+        - name: Лиля
+    - action: action_remember_name
+
+- rule: Запрос имени
+  steps:
+    - intent: ask_name
+    - action: utter_ask_name

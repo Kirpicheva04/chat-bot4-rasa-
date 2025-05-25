@@ -1,0 +1,85 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - calculate
+  - ask_music
+  - get_weather
+  - ask_time
+  - search
+  - inform
+  - ask_name
+  - tell_name
+  - thank_you
+  - how_are_you
+  - what_can_you_do
+
+entities:
+  - city
+  - name
+
+slots:
+  city:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: city
+
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: name
+
+  last_bot_message:
+    type: text
+    mappings:
+      - type: from_text
+
+  data:
+    type: text
+    mappings:
+      - type: from_text
+  time:
+    type: text
+    mappings:
+      - type: from_text
+
+responses:
+  utter_greet:
+    - text: "Привет! Меня зовут Ботик."
+  utter_goodbye:
+    - text: "До встречи!"
+  utter_ask_city:
+    - text: "В каком городе тебя интересует погода?"
+  utter_weather:
+    - text: "Погода в {city} сейчас отличная!"
+  utter_music:
+    - text: "Ещё не придумал анекдот"
+  utter_ask_time:
+    - text: "Текущая дата: {data}, время: {time}"
+  utter_search_result:
+    - text: "Вот что я нашел:\n"
+  utter_analyze_sentiment:
+    - text: "{sentiment_response}"
+  utter_ask_name:
+    - text: "Как тебя зовут?"
+  utter_you_are_welcome:
+    - text: "Пожалуйста!"
+  utter_how_are_you:
+    - text: "Всё хорошо, спасибо, что спросили! Как у тебя?"
+  utter_what_can_you_do:
+    - text: "Я могу:\n- рассказывать анекдоты\n- узнавать погоду\n- подсказать время\n- найти что-нибудь в интернете\n- посчитать пример\nЧем могу помочь?"
+
+actions:
+  - action_get_time
+  - action_get_weather
+  - action_random_song
+  - action_calculate
+  - action_web_search
+  - action_analyze_sentiment
+  - action_remember_name
+  - action_get_name
